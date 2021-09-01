@@ -1,16 +1,14 @@
+require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 
 const connectDB = async () => {
   await mongoose
-    .connect(
-      "mongodb+srv://Kapil:123%40kapil@blog-cluster.4gx5m.mongodb.net/blogs?retryWrites=true&w=majority",
-      {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-      }
-    )
+    .connect(process.env.URL, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    })
     .then(() => {
       console.log("Database Connected");
     })
@@ -29,12 +27,12 @@ app.use(express.json());
 app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get("/", (req, res) => {
-  // res.json("kya chal raha hai");
+// app.get("/", (req, res) => {
+//   // res.json("kya chal raha hai");
 
-  res.sendFile(__dirname + "/index.html");
-  // res.sendFile(__dirname + "/signin.html");
-});
+//   res.sendFile(__dirname + "/index.html");
+//   // res.sendFile(__dirname + "/signin.html");
+// });
 
 // SCHEMA
 const userSchema = new mongoose.Schema({
