@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import "./App.css";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import { Carousel_cont, Post } from "./components/Post";
+import RightBar from "./components/RightBar";
+import CardsContainer from "./components/Cards";
+import Mid from "./components/Mid";
 
 function App() {
+  const [renderPost, setRenderPost] = useState(false);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <Mid></Mid>
+      <Footer></Footer>
     </div>
   );
 }

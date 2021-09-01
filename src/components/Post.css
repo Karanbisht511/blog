@@ -1,0 +1,35 @@
+.post {
+  width: 60%;
+  text-align: center;
+  text-justify: distribute;
+  border: 1px solid black;
+  padding: 5px;
+  margin: 2%;
+}
+
+.post h1 {
+  font-family: "Abril Fatface", cursive;
+}
+.post p {
+  font-size: 1.1rem;
+}
+.caro {
+  height: 30%;
+  width: 100%;
+}
+.caro img {
+  object-fit: cover;
+  border-radius: 0;
+}
+.caro h3 {
+  color: black;
+  margin: 10% 70% 30% 3%;
+}
+
+.list {
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+  color: black;
+  font-size: 25px;
+}

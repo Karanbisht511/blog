@@ -1,0 +1,63 @@
+.popup-actual {
+  position: fixed;
+  top: 5%;
+  left: 35%;
+  visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  background-color: rgb(125, 185, 187);
+  padding: 20px;
+  z-index: 5;
+  width: 30%;
+  border-radius: 10%;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.show {
+  visibility: visible;
+  backdrop-filter: blur(5px);
+}
+
+.hide {
+  visibility: hidden;
+}
+
+.form-element {
+  display: block;
+  margin: 10px;
+}
+
+.cross {
+  width: 30px;
+  height: 30px;
+  align-self: flex-end;
+}
+
+.small {
+  display: flex;
+  justify-content: space-around;
+  font-size: 0.5em;
+}
+#rememberMe {
+  font-size: 1rem;
+}
+#forget {
+  font-size: 1rem;
+  left: 80px;
+}
+
+@media (max-width: 800px) {
+  .popup-actual {
+    position: fixed;
+    top: 10vh;
+    left: 10vw;
+    width: 80%;
+    height: 500px;
+  }
+}

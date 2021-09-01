@@ -1,0 +1,14 @@
+.note-button {
+  position: fixed;
+  right: 0;
+  bottom: 50px;
+}
+
+.textArea {
+  position: fixed;
+  right: 0px;
+  bottom: 85px;
+  visibility: hidden;
+  width: 30%;
+  height: 300px;
+}
