@@ -7,6 +7,7 @@ import PostList from "./PostList";
 function Mid() {
   const [domainArray, setDomainArray] = useState();
   const [render, setRender] = useState(false);
+
   useEffect(() => {
     axios
       .get("/domains")
@@ -20,15 +21,15 @@ function Mid() {
       });
   }, []);
 
-  window.onscroll = function () {
-    console.log("scroll");
-    let topics = document.querySelector(".mid");
-    if (document.documentElement.scrollTop > 100) {
-      topics.classList.add("fix-mid-top");
-    } else if (document.documentElement.scrollTop < 100) {
-      topics.classList.remove("fix-mid-top");
-    }
-  };
+  // window.onscroll = function () {
+  //   console.log("scroll");
+  //   let topics = document.querySelector(".mid");
+  //   if (document.documentElement.scrollTop > 100) {
+  //     topics.classList.add("fix-mid-top");
+  //   } else if (document.documentElement.scrollTop < 100) {
+  //     topics.classList.remove("fix-mid-top");
+  //   }
+  // };
 
   return (
     <Router>

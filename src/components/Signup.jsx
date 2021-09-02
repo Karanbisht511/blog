@@ -8,10 +8,8 @@ import axios from "axios";
 
 function Login(props) {
   function handleClick() {
-    {
-      let toggle = document.querySelector(".signup");
-      toggle.style.visibility = "hidden";
-    }
+    let toggle = document.querySelector(".signup");
+    toggle.style.visibility = "hidden";
   }
 
   const validate = Yup.object({

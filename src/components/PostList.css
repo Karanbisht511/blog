@@ -1,0 +1,11 @@
+.postList {
+  background-color: chartreuse;
+}
+
+.list {
+  cursor: pointer;
+  text-decoration: none;
+  color: black;
+  font-size: 25px;
+  margin: 20px;
+}

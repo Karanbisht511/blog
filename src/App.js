@@ -13,9 +13,11 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Mid className="mid-section"></Mid>
+
       <Carousel_cont />
+      <Mid className="mid-section"></Mid>
       <CardsContainer></CardsContainer>
+
       <Footer></Footer>
     </div>
   );

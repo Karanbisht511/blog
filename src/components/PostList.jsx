@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Carousel_cont, Post } from "./Post";
 import "./Post.css";
+import "./PostList.css";
 import { useLocation } from "react-router";
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 
