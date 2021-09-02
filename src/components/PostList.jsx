@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Post from "./Post";
+import { Carousel_cont, Post } from "./Post";
 import "./Post.css";
 import { useLocation } from "react-router";
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
@@ -10,22 +10,25 @@ function PostList() {
   const [list, setList] = useState();
   const [render, setRender] = useState(false);
 
+  console.log("postList:", data);
+
   useEffect(() => {
     axios
       .post("/postsList", data)
       .then((res) => {
-        console.log(res);
+        console.log(res.data);
         setList(res.data);
         setRender(true);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [data]);
 
   return (
     <Router>
       <div className="postList">
+        {console.log("rendering here:", list)}
         {render &&
           list.map((element) => {
             return (

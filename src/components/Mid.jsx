@@ -20,11 +20,19 @@ function Mid() {
       });
   }, []);
 
+  window.onscroll = function () {
+    console.log("scroll");
+    let topics = document.querySelector(".mid");
+    if (document.documentElement.scrollTop > 100) {
+      topics.classList.add("fix-mid-top");
+    } else if (document.documentElement.scrollTop < 100) {
+      topics.classList.remove("fix-mid-top");
+    }
+  };
+
   return (
     <Router>
       <div className="mid">
-        <h1 className="heading">Domains</h1>
-
         {render &&
           domainArray.map((element) => {
             return (

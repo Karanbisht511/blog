@@ -27,13 +27,6 @@ app.use(express.json());
 app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// app.get("/", (req, res) => {
-//   // res.json("kya chal raha hai");
-
-//   res.sendFile(__dirname + "/index.html");
-//   // res.sendFile(__dirname + "/signin.html");
-// });
-
 // SCHEMA
 const userSchema = new mongoose.Schema({
   firstName: String,

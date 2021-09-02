@@ -20,16 +20,6 @@ function Header() {
   const [showLogin, setLoginShow] = useState(false);
   const [showSignup, setSignupShow] = useState(false);
 
-  // window.onscroll = function () {
-  //   console.log("scroll");
-  //   let topics = document.querySelector("#topic");
-  //   if (document.documentElement.scrollTop > 100) {
-  //     topics.classList.add("fix-topic-top");
-  //   } else if (document.documentElement.scrollTop < 100) {
-  //     topics.classList.remove("fix-topic-top");
-  //   }
-  // };
-
   return (
     <div id="header-container">
       <div id="logo" className="header-elements">

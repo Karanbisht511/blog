@@ -8,12 +8,14 @@ import CardsContainer from "./components/Cards";
 import Mid from "./components/Mid";
 
 function App() {
-  const [renderPost, setRenderPost] = useState(false);
+  // const [renderPost, setRenderPost] = useState(false);
 
   return (
     <div className="App">
       <Header />
-      <Mid></Mid>
+      <Mid className="mid-section"></Mid>
+      <Carousel_cont />
+      <CardsContainer></CardsContainer>
       <Footer></Footer>
     </div>
   );
