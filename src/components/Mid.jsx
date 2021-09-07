@@ -3,6 +3,7 @@ import "./Mid.css";
 import axios from "axios";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import PostList from "./PostList";
+import { Post } from "./Post";
 
 function Mid() {
   const [domainArray, setDomainArray] = useState();
@@ -21,6 +22,14 @@ function Mid() {
       });
   }, []);
 
+  const [title, setTitle] = useState();
+
+  function handleOnChange(event) {
+    let data = event.target.value;
+    setTitle(data);
+    console.log(data);
+  }
+
   // window.onscroll = function () {
   //   console.log("scroll");
   //   let topics = document.querySelector(".mid");
@@ -34,8 +43,6 @@ function Mid() {
   return (
     <Router>
       <div className="mid">
-        {/* <h1>Hello</h1> */}
-
         {render &&
           domainArray.map((element) => {
             return (
@@ -50,10 +57,30 @@ function Mid() {
               </Link>
             );
           })}
+        <input
+          onChange={handleOnChange}
+          type="text"
+          name="title"
+          id="toSearch"
+          placeholder="search any article"
+          value={title}
+        ></input>
+        <Link to={{ pathname: "/post", state: { postTitle: title } }}>
+          <button
+            onClick={() => {
+              setTitle("");
+            }}
+          >
+            submit
+          </button>
+        </Link>
 
         <Switch>
           <Route path="/PostList">
             <PostList></PostList>
+          </Route>
+          <Route path="/post">
+            <Post></Post>
           </Route>
         </Switch>
       </div>

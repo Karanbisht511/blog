@@ -10,8 +10,7 @@ import Setting from "./Setting";
 import AddContent from "./AddContent";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBell, faCog, faCoffee } from "@fortawesome/free-solid-svg-icons";
-import axios from "axios";
-import { Post } from "./Post";
+
 // elements to use fontawesome icons
 const notif = <FontAwesomeIcon icon={faBell} />;
 const setting = <FontAwesomeIcon icon={faCog} />;
@@ -20,26 +19,6 @@ function Header() {
   const [AddContentform, setAddContentform] = useState(false);
   const [showLogin, setLoginShow] = useState(false);
   const [showSignup, setSignupShow] = useState(false);
-
-  const [realTitle, setRealTitle] = useState();
-  const [title, setTitle] = useState();
-
-  function handleOnChange(event) {
-    let data = event.target.value;
-    setTitle(data);
-    console.log(data);
-  }
-
-  useEffect(() => {
-    axios
-      .post("/posts", { postTitle: realTitle })
-      .then((res) => {
-        console.log(res.data);
-      })
-      .catch((err) => {
-        console.log("nahin hora bhai :", err);
-      });
-  }, [realTitle]);
 
   return (
     <div id="header-container">
@@ -53,27 +32,6 @@ function Header() {
       <ul id="header-navbar-mid" className="header-elements header-list">
         <h1>DayNite Blogging</h1>
       </ul>
-
-      <div>
-        <input
-          onChange={handleOnChange}
-          type="text"
-          name="title"
-          id="toSearch"
-          placeholder="search any article"
-          value={title}
-        ></input>
-        <button
-          type="submit"
-          onClick={() => {
-            setRealTitle(title);
-            // Post(realTitle);
-          }}
-        >
-          submit
-        </button>
-        {/* <p>{title}</p> */}
-      </div>
 
       <ul id="header-navbar-right" className="header-elements header-list">
         <li>{notif}</li>

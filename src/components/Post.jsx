@@ -50,17 +50,12 @@ function Carousel_cont() {
   );
 }
 
-function Post(props) {
+function Post() {
   const [render, setRender] = useState(false);
   const [postInfo, setPostInfo] = useState();
-  const [realTitle, setRealTitle] = useState();
   let title = useLocation().state;
 
-  // if (title) {
-  //   setRealTitle(title);
-  // } else {
-  //   setRealTitle(props.title);
-  // }
+  console.log(title);
 
   useEffect(() => {
     axios
@@ -86,10 +81,15 @@ function Post(props) {
     );
   }
 
+  function renderNotFound(event) {
+    // event.preventDefault();
+    return <div>ARTICLE NOT FOUND!</div>;
+  }
+
   return (
     <div>
-      {console.log(postInfo)}
-      {render && renderPost(postInfo)}
+      {postInfo && render ? renderPost(postInfo) : renderNotFound()}
+      {/* {console.log(postInfo)} */}
     </div>
   );
 }
