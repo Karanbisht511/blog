@@ -34,6 +34,8 @@ function Mid() {
   return (
     <Router>
       <div className="mid">
+        {/* <h1>Hello</h1> */}
+
         {render &&
           domainArray.map((element) => {
             return (
@@ -41,10 +43,14 @@ function Mid() {
                 className="domain"
                 to={{ pathname: "/PostList", state: { domain: element.name } }}
               >
-                {element.name}
+                <button class="btn btn-secondary mt-3" type="submit">
+                  {element.name}
+                </button>
+                {/* <img src="../images/004-coronavirus.png" alt="" /> */}
               </Link>
             );
           })}
+
         <Switch>
           <Route path="/PostList">
             <PostList></PostList>

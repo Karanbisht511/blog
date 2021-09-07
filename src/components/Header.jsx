@@ -1,5 +1,4 @@
-// import { div } from "prelude-ls";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "./Header.css";
 import Topic from "./Topic";
@@ -8,17 +7,39 @@ import "./Login.css";
 import Signup from "./Signup";
 import "./Signup.css";
 import Setting from "./Setting";
-import Notes from "./Notes";
+import AddContent from "./AddContent";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBell, faCog, faCoffee } from "@fortawesome/free-solid-svg-icons";
-
+import axios from "axios";
+import { Post } from "./Post";
 // elements to use fontawesome icons
 const notif = <FontAwesomeIcon icon={faBell} />;
 const setting = <FontAwesomeIcon icon={faCog} />;
 
 function Header() {
+  const [AddContentform, setAddContentform] = useState(false);
   const [showLogin, setLoginShow] = useState(false);
   const [showSignup, setSignupShow] = useState(false);
+
+  const [realTitle, setRealTitle] = useState();
+  const [title, setTitle] = useState();
+
+  function handleOnChange(event) {
+    let data = event.target.value;
+    setTitle(data);
+    console.log(data);
+  }
+
+  useEffect(() => {
+    axios
+      .post("/posts", { postTitle: realTitle })
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log("nahin hora bhai :", err);
+      });
+  }, [realTitle]);
 
   return (
     <div id="header-container">
@@ -33,6 +54,27 @@ function Header() {
         <h1>DayNite Blogging</h1>
       </ul>
 
+      <div>
+        <input
+          onChange={handleOnChange}
+          type="text"
+          name="title"
+          id="toSearch"
+          placeholder="search any article"
+          value={title}
+        ></input>
+        <button
+          type="submit"
+          onClick={() => {
+            setRealTitle(title);
+            // Post(realTitle);
+          }}
+        >
+          submit
+        </button>
+        {/* <p>{title}</p> */}
+      </div>
+
       <ul id="header-navbar-right" className="header-elements header-list">
         <li>{notif}</li>
         <li>
@@ -45,7 +87,7 @@ function Header() {
             if (showSignup === true) setSignupShow(() => !showSignup);
           }}
         >
-          <button type="button" class="btn btn-info">
+          <button type="button" className="btn btn-info">
             Login
           </button>
         </li>
@@ -56,12 +98,24 @@ function Header() {
             if (showLogin === true) setLoginShow(() => !showLogin);
           }}
         >
-          <button type="button" class="btn btn-success">
+          <button type="button" className="btn btn-success">
             Sign up
           </button>
         </li>
-      </ul>
 
+        <li
+          onClick={() => {
+            setAddContentform(() => !AddContentform);
+            if (AddContentform === true)
+              setAddContentform(() => !AddContentform);
+          }}
+        >
+          <button type="button" className="btn btn-dark">
+            Add Content
+          </button>
+        </li>
+      </ul>
+      <AddContent show={AddContentform}></AddContent>
       <Login show={showLogin}></Login>
       <Signup show={showSignup}></Signup>
 

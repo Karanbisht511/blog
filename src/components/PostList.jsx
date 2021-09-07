@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Carousel_cont, Post } from "./Post";
+import { Post } from "./Post";
 import "./Post.css";
 import "./PostList.css";
 import { useLocation } from "react-router";
@@ -40,7 +40,9 @@ function PostList() {
                   state: { postTitle: element.post.title },
                 }}
               >
+                <button type="button" class="btn btn-light">
                 {element.post.title}
+                </button>
               </Link>
             );
           })}

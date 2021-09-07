@@ -33,7 +33,8 @@
   cursor: pointer;
 }
 .header-list h1 {
-  font-family: "Festive", cursive;
+  font-family: Transonic, cursive;
+  font-size: 4rem;
 }
 
 .header-elements {

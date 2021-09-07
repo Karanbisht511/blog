@@ -68,7 +68,7 @@ app.post("/signup", (req, res) => {
     lastName: data.lastName,
     userName: data.userName,
     email: data.email,
-    password: data.password[0],
+    password: data.password,
   });
 
   newUser
@@ -90,9 +90,8 @@ const postSchema = new mongoose.Schema({
   userName: String,
   post: {
     title: String,
-    metaTitle: String,
-    slug: String,
-    summary: String,
+    domain: String,
+    content: String,
   },
   publishedAt: { type: "date" },
   updatedAt: { type: "date" },
@@ -103,10 +102,14 @@ const Post = new mongoose.model("Post", postSchema);
 app.post("/insertPost", (req, res) => {
   let data = req.body;
   console.log(data);
+
   const newPost = new Post({
-    authorId: data.authorId,
     userName: data.userName,
-    post: data.post,
+    post: {
+      title: data.title,
+      domain: data.domain,
+      content: data.content,
+    },
     publishedAt: data.publishedAt,
     updatedAt: data.updatedAt,
   });
@@ -119,7 +122,14 @@ app.post("/insertPost", (req, res) => {
     .catch((error) => {
       console.log("cant insert data due to ", error);
     });
+  res.json(data);
 });
+
+// app.post("/searchTitle", async (req, res) => {
+//   const reqTitle = req.body.title;
+//   let data = await Post.findOne({ "post.title": reqTitle });
+//   res.json(data);
+// });
 
 app.post("/getPost", async (req, res) => {
   let postTitle = req.body.title;

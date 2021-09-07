@@ -22,3 +22,11 @@
   position: fixed;
   top: 0;
 }
+.mid button {
+  padding: 10px 2px;
+}
+
+.domain img {
+  height: 5%;
+  width: 5%;
+}

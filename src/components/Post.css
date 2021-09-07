@@ -1,10 +1,11 @@
 .post {
   width: 60%;
-  text-align: center;
+  text-align: left;
   text-justify: distribute;
   border: 1px solid black;
   padding: 5px;
   margin: 20px auto;
+  
 }
 
 .post h1 {

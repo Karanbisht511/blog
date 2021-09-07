@@ -3,9 +3,13 @@
 }
 
 .list {
+  font-family: 'Times New Roman', Times, serif;
   cursor: pointer;
   text-decoration: none;
   color: black;
   font-size: 25px;
   margin: 20px;
+}
+.list button {
+  width: 8%;
 }

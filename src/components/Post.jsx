@@ -50,10 +50,17 @@ function Carousel_cont() {
   );
 }
 
-function Post() {
+function Post(props) {
   const [render, setRender] = useState(false);
   const [postInfo, setPostInfo] = useState();
+  const [realTitle, setRealTitle] = useState();
   let title = useLocation().state;
+
+  // if (title) {
+  //   setRealTitle(title);
+  // } else {
+  //   setRealTitle(props.title);
+  // }
 
   useEffect(() => {
     axios

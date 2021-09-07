@@ -1,46 +1,47 @@
 import React from "react";
-import "./Login.css";
 
 import { Textfield } from "./Textfield.js";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 
-function Login(props) {
-  function handleClick() {
-    let toggle = document.querySelector(".signup");
-    toggle.style.visibility = "hidden";
-  }
+function AddContent(props) {
+    function handleClick() {
+        let toggle = document.querySelector(".signup");
+        toggle.style.visibility = "hidden";
+      }
+  
+
+//   fileSelectedHandler = event =>{
+//       console.log(event);
+//   }
 
   const validate = Yup.object({
-    firstName: Yup.string()
-      .max(12, "Must be 12 characters or less")
+    userName: Yup.string()
+      .max(15, "Must be 15 characters or less")
       .required("Required"),
-    lastName: Yup.string()
-      .max(12, "Must be 12 characters or less")
+    title: Yup.string()
+      .max(20, "Must be 20 characters or less")
       .required("Required"),
-    email: Yup.string().email("Invalid Email").required("Email is Required"),
-    password: Yup.string()
-      .min(6, "Must be 6 characters or more")
+    domain: Yup.string().max(20,"Please enter the correct spelling from above domains").required("Domain is Required"),
+    content: Yup.string()
+      .max(1000, "Only 10000 characters allowed")
       .required("Required"),
-    password: Yup.string()
-      .oneOf([Yup.ref("password"), null], "Password does not match")
-      .required("Required"),
+    
   });
 
   return (
     <Formik
       initialValues={{
-        firstName: "",
-        lastName: "",
-        email: "",
-        password: "",
-        password: "",
+        userName: "",
+        title: "",
+        domain: "",
+        content: "",
       }}
       validationSchema={validate}
       onSubmit={(values, { resetForm }) => {
         axios
-          .post("/signup", values)
+          .post("/insertPost", values)
           .then((res) => {
             console.log(res);
           })
@@ -66,36 +67,32 @@ function Login(props) {
             onClick={handleClick}
             alt="close"
           ></img>
-          <h1 className="my-4 font-weight-bold-display-4">Sign Up</h1>
+          <h1 className="my-4 font-weight-bold-display-4">Add Content</h1>
 
           <Form>
             <Textfield
-              label="First Name"
-              name="firstName"
+              label="Username"
+              name="userName"
               type="text"
             ></Textfield>
             <Textfield
-              label="Last Name"
-              name="lastName"
+              label="Title"
+              name="title"
               type="text"
             ></Textfield>
-            <Textfield label="Email" name="email" type="email"></Textfield>
+            <Textfield label="Domain" name="domain" type="text"></Textfield>
             <Textfield
-              label="Password"
-              name="password"
-              type="password"
+              label="Content"
+              name="content"
+              type="text"
             ></Textfield>
-            <Textfield
-              label="Confirm Password"
-              name="password"
-              type="password"
-            ></Textfield>
+            {/* <input type="file" onChange={fileSelectedHandler}/> */}
             <button
               class="btn btn-success mt-3"
               type="submit"
               onClick={handleClick}
             >
-              Register
+              Post
             </button>
           </Form>
         </div>
@@ -104,4 +101,4 @@ function Login(props) {
   );
 }
 
-export default Login;
+export default AddContent;
