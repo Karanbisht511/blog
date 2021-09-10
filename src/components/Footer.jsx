@@ -5,8 +5,9 @@ const year= new Date().getFullYear();
 
 function Footer() {
   return (
-    <div className="footer">
-      <p> copyright@ Daynite Blogging {year} </p>
+    <div class="footer">
+        <h1 class="footer_title">DayNite <span>Blogging</span></h1>
+        <p class="footer_f">&#169; All Rights Reserved {year}</p>
     </div>
   );
 }
