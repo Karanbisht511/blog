@@ -50,31 +50,30 @@ function Mid() {
                 className="domain"
                 to={{ pathname: "/PostList", state: { domain: element.name } }}
               >
-                <button class="btn btn-secondary mt-3" type="submit">
+                <button class="btn btn-primary mt-3" type="submit">
                   {element.name}
                 </button>
                 {/* <img src="../images/004-coronavirus.png" alt="" /> */}
               </Link>
             );
           })}
-        <input
+          <div className="search-here">
+          <input className="form-control"
           onChange={handleOnChange}
           type="text"
           name="title"
           id="toSearch"
-          placeholder="search any article"
-          value={title}
-        ></input>
-        <Link to={{ pathname: "/post", state: { postTitle: title } }}>
-          <button
+          placeholder=" Search for..."
+          value={title}></input>
+            <Link to={{ pathname: "/post", state: { postTitle: title } }}>
+          <button class = "btn btn-secondary" type="button"
             onClick={() => {
               setTitle("");
-            }}
-          >
-            submit
+            }}>
+              Search
           </button>
         </Link>
-
+        </div>
         <Switch>
           <Route path="/PostList">
             <PostList></PostList>
