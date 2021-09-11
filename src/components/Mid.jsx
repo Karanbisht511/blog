@@ -57,23 +57,30 @@ function Mid() {
               </Link>
             );
           })}
-          <div className="search-here">
-          <input className="form-control"
-          onChange={handleOnChange}
-          type="text"
-          name="title"
-          id="toSearch"
-          placeholder=" Search for..."
-          value={title}></input>
-            <Link to={{ pathname: "/post", state: { postTitle: title } }}>
-          <button class = "btn btn-secondary" type="button"
-            onClick={() => {
-              setTitle("");
-            }}>
+
+        <div className="search-here">
+          <input
+            className="form-control"
+            onChange={handleOnChange}
+            type="text"
+            name="title"
+            id="toSearch"
+            placeholder=" Search for..."
+            value={title}
+          ></input>
+          <Link to={{ pathname: "/post", state: { postTitle: title } }}>
+            <button
+              class="btn btn-secondary"
+              type="button"
+              onClick={() => {
+                setTitle("");
+              }}
+            >
               Search
-          </button>
-        </Link>
+            </button>
+          </Link>
         </div>
+
         <Switch>
           <Route path="/PostList">
             <PostList></PostList>
