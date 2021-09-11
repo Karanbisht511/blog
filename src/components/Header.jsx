@@ -43,6 +43,8 @@ function Header() {
           onClick={() => {
             setLoginShow(() => !showLogin);
             if (showSignup === true) setSignupShow(() => !showSignup);
+            if (AddContentform === true)
+              setAddContentform(() => !AddContentform);
           }}
         >
           <button type="button" className="btn btn-info">
@@ -54,6 +56,8 @@ function Header() {
           onClick={() => {
             setSignupShow(() => !showSignup);
             if (showLogin === true) setLoginShow(() => !showLogin);
+            if (AddContentform === true)
+              setAddContentform(() => !AddContentform);
           }}
         >
           <button type="button" className="btn btn-success">
@@ -64,8 +68,10 @@ function Header() {
         <li
           onClick={() => {
             setAddContentform(() => !AddContentform);
-            if (AddContentform === true)
-              setAddContentform(() => !AddContentform);
+            // if (AddContentform === true)
+            //   setAddContentform(() => !AddContentform);
+            if (showLogin === true) setLoginShow(() => !showLogin);
+            if (showSignup === true) setSignupShow(() => !showSignup);
           }}
         >
           <button type="button" className="btn btn-dark">

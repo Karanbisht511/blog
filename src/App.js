@@ -17,7 +17,7 @@ function App() {
 
       {/* <Carousel_cont /> */}
       <Mid className="mid-section"></Mid>
-      {/* <CardsContainer></CardsContainer> */}
+      <CardsContainer></CardsContainer>
 
       <Footer></Footer>
     </div>

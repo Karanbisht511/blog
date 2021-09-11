@@ -6,15 +6,10 @@ import * as Yup from "yup";
 import axios from "axios";
 
 function AddContent(props) {
-    function handleClick() {
-        let toggle = document.querySelector(".signup");
-        toggle.style.visibility = "hidden";
-      }
-  
-
-//   fileSelectedHandler = event =>{
-//       console.log(event);
-//   }
+  function handleClick() {
+    let toggle = document.querySelector(".add-content");
+    toggle.style.visibility = "hidden";
+  }
 
   const validate = Yup.object({
     userName: Yup.string()
@@ -23,11 +18,12 @@ function AddContent(props) {
     title: Yup.string()
       .max(20, "Must be 20 characters or less")
       .required("Required"),
-    domain: Yup.string().max(20,"Please enter the correct spelling from above domains").required("Domain is Required"),
+    domain: Yup.string()
+      .max(20, "Please enter the correct spelling from above domains")
+      .required("Domain is Required"),
     content: Yup.string()
       .max(1000, "Only 10000 characters allowed")
       .required("Required"),
-    
   });
 
   return (
@@ -55,7 +51,7 @@ function AddContent(props) {
     >
       {(formik) => (
         <div
-          className="popup-actual signup"
+          className="popup-actual add-content"
           style={
             props.show ? { visibility: "visible" } : { visibility: "hidden" }
           }
@@ -70,22 +66,10 @@ function AddContent(props) {
           <h1 className="my-4 font-weight-bold-display-4">Add Content</h1>
 
           <Form>
-            <Textfield
-              label="Username"
-              name="userName"
-              type="text"
-            ></Textfield>
-            <Textfield
-              label="Title"
-              name="title"
-              type="text"
-            ></Textfield>
+            <Textfield label="Username" name="userName" type="text"></Textfield>
+            <Textfield label="Title" name="title" type="text"></Textfield>
             <Textfield label="Domain" name="domain" type="text"></Textfield>
-            <Textfield
-              label="Content"
-              name="content"
-              type="text"
-            ></Textfield>
+            <Textfield label="Content" name="content" type="text"></Textfield>
             {/* <input type="file" onChange={fileSelectedHandler}/> */}
             <button
               class="btn btn-success mt-3"
