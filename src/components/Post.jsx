@@ -1,4 +1,3 @@
-// import { div } from "prelude-ls";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./Post.css";
