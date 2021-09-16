@@ -66,7 +66,7 @@ function Mid() {
             type="text"
             name="title"
             id="toSearch"
-            placeholder=" Search for..."
+            placeholder=" Search"
             value={title}
           ></input>
           <Link to={{ pathname: "/post", state: { postTitle: title } }}>

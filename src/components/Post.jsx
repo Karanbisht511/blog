@@ -60,7 +60,9 @@ function Post(props) {
   }
 
   function handleClick() {
-    props.triggerToggleRender();
+    if (props.triggerToggleRender) {
+      props.triggerToggleRender();
+    }
     setRender(false);
   }
 

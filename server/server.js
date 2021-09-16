@@ -46,33 +46,29 @@ app.post("/login", (req, res) => {
   User.findOne({ email: username }, (err, foundUser) => {
     if (err) {
       console.log(err);
-    }
-    else {
+    } else {
       if (foundUser) {
         bcrypt.compare(password, foundUser.password, (err, result) => {
           if (result === true) {
-            console.log(username)
+            console.log(username);
             res.send("/domains");
+          } else {
+            console.log("Incorrect Password");
+            res.send("Incorrect Password");
           }
-          else {
-            console.log("Incorrect Password")
-            res.send("Incorrect Password")
-          }
-        })
-
-      }
-      else {
-        console.log("Invalid Email")
-        res.send("Email Not Found ")
+        });
+      } else {
+        console.log("Invalid Email");
+        res.send("Email Not Found ");
       }
     }
-  })
-})
-
+  });
+});
 
 app.post("/signup", (req, res) => {
   const data = req.body;
   console.log(data);
+
   bcrypt.hash(data.password, process.env.SALTROUNDS, (err, hash) => {
     const newUser = new User({
       firstName: data.firstName,
@@ -84,12 +80,11 @@ app.post("/signup", (req, res) => {
     newUser.save((err) => {
       if (err) {
         console.log(err);
+      } else {
+        console.log(newUser.result);
+        res.send("/domains");
       }
-      else {
-        console.log(newUser.result)
-        res.send("/domains")
-      }
-    })
+    });
   });
 });
 
