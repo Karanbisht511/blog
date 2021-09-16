@@ -58,7 +58,7 @@ function Login(props) {
           style={
             props.show ? { visibility: "visible" } : { visibility: "hidden" }
           }
-          class="popup-actual login"
+          className="popup-actual login"
         >
           <button className="btn ml-10" onClick={handleClick}>
             {closeIcon}
@@ -73,17 +73,21 @@ function Login(props) {
               text="Enter your e-mail id"
             />
             <Textfield label="Password" name="password" type="password" />
-            <div class="mb-3 form-check">
-              <a href="#" id="forget">
+            <div className="mb-3 form-check">
+              <a href="" id="forget">
                 Forget Password
               </a>
             </div>
-            <button type="submit" class="btn btn-primary" onClick={handleClick}>
+            <button
+              type="submit"
+              className="btn btn-primary"
+              onClick={handleClick}
+            >
               Login
             </button>
             <button
               type="button"
-              class="btn btn-success"
+              className="btn btn-success"
               onClick={() => {
                 handleSignupClick();
               }}
@@ -91,7 +95,6 @@ function Login(props) {
               Sign up
             </button>
           </Form>
-          {/* <p>response:{responseFromServer}</p> */}
         </div>
       )}
     </Formik>

@@ -50,10 +50,19 @@ function Carousel_cont() {
   );
 }
 
-function Post() {
+function Post(props) {
   const [render, setRender] = useState(false);
   const [postInfo, setPostInfo] = useState();
   let title = useLocation().state;
+
+  function setTitle() {
+    title = "";
+  }
+
+  function handleClick() {
+    props.triggerToggleRender();
+    setRender(false);
+  }
 
   console.log(title);
 
@@ -75,6 +84,12 @@ function Post() {
   function renderPost(data) {
     return (
       <div className="post">
+        <img
+          className="cross"
+          src="/images/cross.png"
+          onClick={handleClick}
+          alt="close"
+        ></img>
         <h1 className="heading">{data.post.title}</h1>
         <p>{data.post.content}</p>
       </div>
@@ -88,7 +103,9 @@ function Post() {
 
   return (
     <div>
-      {postInfo && render ? renderPost(postInfo) : renderNotFound()}
+      {render ? (postInfo ? renderPost(postInfo) : renderNotFound()) : setTitle}
+
+      {/* {postInfo && render ? renderPost(postInfo) : renderNotFound()} */}
       {/* {console.log(postInfo)} */}
     </div>
   );

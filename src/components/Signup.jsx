@@ -91,7 +91,7 @@ function Login(props) {
               type="password"
             ></Textfield>
             <button
-              class="btn btn-success mt-3"
+              className="btn btn-success mt-3"
               type="submit"
               onClick={handleClick}
             >

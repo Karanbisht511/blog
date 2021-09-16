@@ -11,6 +11,10 @@ function PostList() {
   const [list, setList] = useState();
   const [render, setRender] = useState(false);
 
+  function toggleRender() {
+    setRender(!render);
+  }
+
   console.log("postList:", data);
 
   useEffect(() => {
@@ -31,17 +35,18 @@ function PostList() {
       <div className="postList">
         {console.log("rendering here:", list)}
         {render &&
-          list.map((element) => {
+          list.map((element, index) => {
             return (
               <Link
+                key={index}
                 className="list"
                 to={{
                   pathname: "/post",
                   state: { postTitle: element.post.title },
                 }}
               >
-                <button type="button" class="btn btn-light">
-                {element.post.title}
+                <button type="button" className="btn btn-light">
+                  {element.post.title}
                 </button>
               </Link>
             );
@@ -49,7 +54,7 @@ function PostList() {
       </div>
       <Switch>
         <Route path="/post">
-          <Post></Post>
+          <Post triggerToggleRender={toggleRender}></Post>
         </Route>
       </Switch>
     </Router>

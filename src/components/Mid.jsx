@@ -44,13 +44,14 @@ function Mid() {
     <Router>
       <div className="mid">
         {render &&
-          domainArray.map((element) => {
+          domainArray.map((element, index) => {
             return (
               <Link
+                key={index}
                 className="domain"
                 to={{ pathname: "/PostList", state: { domain: element.name } }}
               >
-                <button class="btn btn-primary mt-3" type="submit">
+                <button className="btn btn-primary mt-3" type="submit">
                   {element.name}
                 </button>
                 {/* <img src="../images/004-coronavirus.png" alt="" /> */}
@@ -70,7 +71,7 @@ function Mid() {
           ></input>
           <Link to={{ pathname: "/post", state: { postTitle: title } }}>
             <button
-              class="btn btn-secondary"
+              className="btn btn-secondary"
               type="button"
               onClick={() => {
                 setTitle("");

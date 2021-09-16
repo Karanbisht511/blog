@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import React, { useState } from "react";
+// import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "./Header.css";
-import Topic from "./Topic";
+// import Topic from "./Topic";
 import Login from "./Login";
 import "./Login.css";
 import Signup from "./Signup";
@@ -9,7 +9,7 @@ import "./Signup.css";
 import Setting from "./Setting";
 import AddContent from "./AddContent";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBell, faCog, faCoffee } from "@fortawesome/free-solid-svg-icons";
+import { faBell, faCog } from "@fortawesome/free-solid-svg-icons";
 
 // elements to use fontawesome icons
 const notif = <FontAwesomeIcon icon={faBell} />;

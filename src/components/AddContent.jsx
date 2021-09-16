@@ -72,7 +72,7 @@ function AddContent(props) {
             <Textfield label="Content" name="content" type="text"></Textfield>
             {/* <input type="file" onChange={fileSelectedHandler}/> */}
             <button
-              class="btn btn-success mt-3"
+              className="btn btn-success mt-3"
               type="submit"
               onClick={handleClick}
             >
