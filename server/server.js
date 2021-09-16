@@ -68,8 +68,8 @@ app.post("/login", (req, res) => {
 app.post("/signup", (req, res) => {
   const data = req.body;
   console.log(data);
-
-  bcrypt.hash(data.password, process.env.SALTROUNDS, (err, hash) => {
+  const SALTROUNDS = 5;
+  bcrypt.hash(data.password, SALTROUNDS, (err, hash) => {
     const newUser = new User({
       firstName: data.firstName,
       lastName: data.lastName,
