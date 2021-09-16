@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
 
 const connectDB = async () => {
   await mongoose
@@ -38,50 +39,58 @@ const userSchema = new mongoose.Schema({
 
 const User = new mongoose.model("User", userSchema);
 
-app.post("/login", async (req, res) => {
-  // console.log(req.body);
-  const data = req.body;
-  console.log(data);
-  let userProfile = await User.findOne({ email: data.email });
+app.post("/login", (req, res) => {
+  const username = req.body.email;
+  const password = req.body.password;
 
-  // console.log(userProfile);
-  if (userProfile) {
-    if (userProfile.password === data.password) {
-      console.log("username and password are correct");
-      res.send("username and password are correct");
-    } else {
-      console.log("Incorrect password");
-      res.send("Incorrect password");
+  User.findOne({ email: username }, (err, foundUser) => {
+    if (err) {
+      console.log(err);
     }
-  } else {
-    console.log("Email not found");
-    res.send("Email not found");
-  }
-});
+    else {
+      if (foundUser) {
+        bcrypt.compare(password, foundUser.password, (err, result) => {
+          if (result === true) {
+            console.log(username)
+            res.send("/domains");
+          }
+          else {
+            console.log("Incorrect Password")
+            res.send("Incorrect Password")
+          }
+        })
+
+      }
+      else {
+        console.log("Invalid Email")
+        res.send("Email Not Found ")
+      }
+    }
+  })
+})
+
 
 app.post("/signup", (req, res) => {
   const data = req.body;
   console.log(data);
-
-  const newUser = new User({
-    firstName: data.firstName,
-    lastName: data.lastName,
-    userName: data.userName,
-    email: data.email,
-    password: data.password,
-  });
-
-  newUser
-    .save()
-    .then((result) => {
-      console.log(result);
-      console.log("placed");
-    })
-    .catch((error) => {
-      console.log(error);
+  bcrypt.hash(data.password, process.env.SALTROUNDS, (err, hash) => {
+    const newUser = new User({
+      firstName: data.firstName,
+      lastName: data.lastName,
+      userName: data.userName,
+      email: data.email,
+      password: hash,
     });
-
-  res.json("Done");
+    newUser.save((err) => {
+      if (err) {
+        console.log(err);
+      }
+      else {
+        console.log(newUser.result)
+        res.send("/domains")
+      }
+    })
+  });
 });
 
 // SCHEMA
