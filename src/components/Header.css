@@ -86,3 +86,19 @@
     text-align: center;
   }
 }
+
+@media screen and (max-width: 360px) {
+  #header-navbar-right {
+    padding-left: 1%;
+  }
+
+  ul {
+    margin-bottom: -1rem;
+ }
+  h1{
+    text-align: initial;
+ }
+ .header-elements {
+  text-align: center;
+}
+}
