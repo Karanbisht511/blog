@@ -66,6 +66,7 @@ function Contact() {
               ></input>
             </div>
           </div>
+
           <textarea
             className="form-control"
             rows="10"

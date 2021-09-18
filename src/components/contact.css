@@ -271,6 +271,9 @@ body {
     .paper-plane{
        text-align: center; 
     }
+    .alt-send-button{
+      width: 277px; 
+   }
 }
 
   /* Media Queries: Tablet Landscape */
